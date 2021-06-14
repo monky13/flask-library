@@ -1,0 +1,70 @@
+{% extends "bases.html" %}
+
+{% block ext_css %}
+    <style>
+        .bg {
+            background-image: url("/static/img/background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+{% endblock %}
+
+{% block content1 %}
+    <body class="bg">
+    <div class="container">
+        {% if errors %}
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <strong>提示：{{ errors }}</strong>
+            </div>
+        {% endif %}
+        <hr>
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <table class="table">
+                    <thead>
+                    <tr class="info">
+                        <th>预约位置</th>
+                        <th>预约时间</th>
+                        <th>状态</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for order in order_list %}
+                        <tr class="warning">
+                            <td>
+                                L{{ seat_list[loop.index0].floor }}_{{ seat_list[loop.index0].row }}-{{ seat_list[loop.index0].col }}</td>
+                            <td>{{ order.estimate_start_time }}</td>
+                            {% if order.statu==1 %}
+                                <td>进行中</td>
+                            {% else %}
+                                <td>已结束</td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 显示页码 -->
+        <nav aria-label="Page navigation">
+            <div class="col-md-4 column">
+            </div>
+            <div class="col-md-4 column" align="center">
+                <ul class="pagination">
+                    {% for p in range(n_page) %}
+                        {% if loop.index == page %}
+                            <li class="active"><a href="#">{{ loop.index }}</a></li>
+                        {% else %}
+                            <li><a href="/forum?page={{ loop.index }}">{{ loop.index }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-md-4 column">
+            </div>
+        </nav>
+    </div>
+    </body>
+{% endblock %}

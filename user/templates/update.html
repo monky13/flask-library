@@ -1,0 +1,88 @@
+{% extends "bases.html" %}
+
+{% block content1 %}
+
+
+{% if errors %}
+<div class="alert alert-danger alert-dismissible" role="alert">
+    <strong>提示：{{ errors }}</strong>
+</div>
+{% endif %}
+
+<form class="form-horizontal" action="/user/update" method="POST" >
+<h3></h3>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">学号：</label>
+        <div class="col-sm-5">
+            <input class="form-control" type="text" name="id" placeholder="{{ user.id }}" readonly = readonly>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">姓名：</label>
+        <div class="col-sm-5">
+            <input class="form-control" type="text" name="name" placeholder="{{ user.name }}" readonly = readonly>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">密码：</label>
+        <div class="col-sm-5">
+            <input class="form-control" type="password" name="password" placeholder="密码请认真输入哟">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">性别：</label>
+        <div class="col-sm-5">
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="male"> 男
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="gender" value="female"> 女
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">生日:</label>
+        <div class="col-sm-5">
+            <input class="form-control" type="date" name="birthday" placeholder="{{ user.birthday }}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">学院:</label>
+        <div class="col-sm-5">
+            <select name="institute" class="form-control">
+                <option value="商学院">商学院</option>
+                <option value="法学院">法学院</option>
+                <option value="师范学院">师范学院</option>
+                <option value="体育学院">体育学院</option>
+                <option value="计算机学院">计算机学院</option>
+                <option value="机械工程学院">机械工程学院</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">邮箱：</label>
+        <div class="col-sm-5">
+            <input class="form-control" type="text" name="email" placeholder="{{ user.email }}">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">学习宣言：</label>
+        <div class="col-sm-8">
+            <textarea  class="form-control" name="bio" rows="5" placeholder="请输入学习宣言">{{ user.bio }}</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-5">
+            <button type="submit" class="btn btn-primary">确认修改</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

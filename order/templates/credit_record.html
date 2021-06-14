@@ -1,0 +1,98 @@
+{% extends "bases.html" %}
+
+{% block ext_css %}
+    <style>
+        .bg {
+            background-image: url("/static/img/background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+{% endblock %}
+
+{% block content1 %}
+    <body class="bg">
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <div class="row clearfix">
+                    <div class="col-md-1 column">
+                    </div>
+                    <div class="col-md-2 column">
+{#                        <img src="/static/img/006.jpg" width="100px"></a>#}
+                        <img src="{{ user.avatar }}" width="100px">
+                    </div>
+                    <div class="col-md-2 column">
+                        <div class="row clearfix">
+                            <div class="col-md-12 column">&nbsp;
+                            </div>
+                            <div class="col-md-12 column">
+                                <span>当前信用：{{ user.credit }}</span>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-md-12 column">
+                            <div class="col-md-12 column">&nbsp;
+                            </div>
+                                <span>总信用：100</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 column">
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if errors %}
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <strong>提示：{{ errors }}</strong>
+            </div>
+        {% endif %}
+        <hr>
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <table class="table">
+                    <thead>
+                    <tr class="info">
+                        <th>日期</th>
+                        <th>位置</th>
+                        <th>违约类型</th>
+                        <th>信用变化</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for credit in credit_list %}
+                        <tr class="warning">
+                            <td>{{ credit.time }}</td>
+                            <td>{{ credit.sid }}</td>
+                            <td>{{ credit.type }}</td>
+                            <td>-5</td>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 显示页码 -->
+        <nav aria-label="Page navigation">
+            <div class="col-md-4 column">
+            </div>
+            <div class="col-md-4 column" align="center">
+                <ul class="pagination">
+                    {% for p in range(n_page) %}
+                        {% if loop.index == page %}
+                            <li class="active"><a href="#">{{ loop.index }}</a></li>
+                        {% else %}
+                            <li><a href="/forum?page={{ loop.index }}">{{ loop.index }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-md-4 column">
+            </div>
+        </nav>
+    </div>
+    </body>
+{% endblock %}

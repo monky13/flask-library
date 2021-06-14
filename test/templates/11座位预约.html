@@ -1,0 +1,132 @@
+{% extends "bases.html" %}
+
+{% block ext_css %}
+    <style>
+        .bg {
+            background-image: url("/static/img/background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+{% endblock %}
+
+{% block content1 %}
+    <body class="bg">
+    <div class="container">
+        <div class="row clearfix">
+            <form class="bs-example bs-example-form" role="form">
+                <div class="form-group class=col-sm-2">
+                    <label class="col-sm-1 control-label">楼层：</label>
+                    <div class="col-sm-1">
+                        <select id="group" value="1">
+                            <option value="1">一楼</option>
+                            <option value="2">二楼</option>
+                            <option value="2">三楼</option>
+                            <option value="2">四楼</option>
+                            <option value="2">五楼</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group class=col-sm-8">
+                    <label class="col-sm-2 control-label">选择时间：</label>
+                    <div class="col-sm-2">
+                        <input class="form-control" type="date" name="date">
+                    </div>
+                    <div class="col-sm-2">
+                        <input class="form-control" type="time" name="time">
+                    </div>
+                    <div class="col-sm-2">
+                        <input class="form-control" type="time" name="time">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <h4></h4>
+        <div class="row clearfix">
+            <div class="col-sm-offset-5 col-md-1 column">
+                <button type="button" class="btn btn-default btn-info">查询</button>
+            </div>
+            <div class="col-md-1 column">
+                <button type="button" class="btn btn-default btn-info">确认预约</button>
+            </div>
+            <div class="col-md-1 column">
+                <button type="button" class="btn btn-default btn-info">取消预约</button>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <table class="table">
+                <thead>
+                <tr class="info">
+                    <th></th>
+                    <th>1列</th>
+                    <th>2列</th>
+                    <th>3列</th>
+                    <th>4列</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="warning">
+                    <td>1排</td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                </tr>
+                <tr class="success">
+                    <td>2排</td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                </tr>
+                <tr class="warning">
+                    <td>3排</td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                </tr>
+                <tr class="success">
+                    <td>4排</td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                </tr>
+                <tr class="warning">
+                    <td>5排</td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                </tr>
+                <tr class="success">
+                    <td>6排</td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                </tr>
+                <tr class="warning">
+                    <td>7排</td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                </tr>
+                <tr class="success">
+                    <td>8排</td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </body>
+{% endblock %}

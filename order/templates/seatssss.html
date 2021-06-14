@@ -1,0 +1,220 @@
+{% extends "bases.html" %}
+
+{% block ext_css %}
+    <style>
+        .bg {
+            background-image: url("/static/img/background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .dialog{
+            display:none;
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border: 1px solid green;
+            left: 50%;
+            margin-left: -150px;
+            top: 200px;
+            z-index: 999;
+            background: rgb(135,206,235);
+        }
+        .dialog1{
+            display:none;
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 1px solid green;
+            left: 50%;
+            text-align: center;
+            font-family: 'kaiti';
+            font-size: 20px;
+            margin-left: -100px;
+            top: 200px;
+            z-index: 999;
+            background: rgb(135,206,235);
+        }
+        .nowTime{
+            margin: 50px 0 0 10px;
+        }
+        .nowTime .pos,.time{
+            margin-top: 10px;
+        }
+        .btn1{
+            margin: 50px 0 10px 0;
+            padding-left: 60px;
+        }
+    </style>
+{% endblock %}
+
+{% block content1 %}
+    <body class="bg">
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-2 column">
+                <label class="control-label">楼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;层：</label>
+            </div>
+            <div class="col-md-2 column">
+                <select class="form-control" id="group" value="1">
+                    <option value="1">一楼</option>
+                    <option value="2">二楼</option>
+                    <option value="2">三楼</option>
+                    <option value="2">四楼</option>
+                    <option value="2">五楼</option>
+                </select>
+            </div>
+            <div class="col-md-8 column">
+                <a class="btn btn-success btn-xs" href="#">&nbsp;&nbsp;&nbsp;</a>空闲&nbsp;&nbsp;
+                <a class="btn btn-warning btn-xs" href="#">&nbsp;&nbsp;&nbsp;</a>忙碌&nbsp;&nbsp;
+                <a class="btn btn-danger btn-xs" href="#">&nbsp;&nbsp;&nbsp;</a>当前预约
+            </div>
+        </div>
+        <br>
+        <div class="row clearfix">
+            <div class="col-md-2 column">
+                <label class="control-label">选择时间：</label>
+            </div>
+            <div class="col-md-6 column">
+                <div class="col-sm-4">
+                    <input class="form-control" readonly="readonly" type="date" name="date">
+                </div>
+                <div class="col-sm-4">
+                    <input class="form-control" type="time" name="time">
+                </div>
+                <div class="col-sm-4">
+                    <input class="form-control" type="time" name="time">
+                </div>
+            </div>
+            <div class="col-md-4 column">
+                <button type="button" class="btn btn-default btn-info">查询</button>
+            </div>
+        </div>
+        <h4></h4>
+    </div>
+    <hr>
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <table class="table">
+                <thead>
+                <tr class="info">
+                    <th></th>
+                    <th>1列</th>
+                    <th>2列</th>
+                    <th>3列</th>
+                    <th>4列</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="warning">
+                    <td>1排</td>
+                    <td><a class="btn btn-success btn-xs" href="#" onclick="dialog()">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-danger btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-success btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                </tr>
+                <tr class="success">
+                    <td>2排</td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                </tr>
+                <tr class="warning">
+                    <td>3排</td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                </tr>
+                <tr class="success">
+                    <td>4排</td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                </tr>
+                <tr class="warning">
+                    <td>5排</td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                </tr>
+                <tr class="success">
+                    <td>6排</td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                </tr>
+                <tr class="warning">
+                    <td>7排</td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                </tr>
+                <tr class="success">
+                    <td>8排</td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">预约</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="dialog">
+        <div class="nowTime">
+            <span>当前时间：</span>
+            <input class="form-control" id="measureDate" readonly="readonly" type="datetime-local" name="date">
+            <div class="pos">
+                <span>预约位置：1楼第2列第3排</span>
+            </div>
+            <div class="time">
+                <span>预计使用时长：</span>
+                <select name="time" class="form-control">
+                    <option value="15">15分钟</option>
+                    <option value="30">30分钟</option>
+                    <option value="45">45分钟</option>
+                    <option value="60">60分钟</option>
+                    <option value="75">75分钟</option>
+                    <option value="90">90分钟</option>
+                <select>
+            </div>
+            <div class="btn1">
+                <button onclick="clo2()">确定</button>
+                <button onclick="clo()" style="margin-left: 50px;">取消</button>
+            </div>
+        </div>
+    </div>
+    <div class="dialog1">
+        <span style="display: inline-block;margin-top: 80px;">您已经成功预约1楼第2列第3排</span>
+        <button onclick="clo1()" style="position: absolute;right:10px;bottom: 10px;">确定</button>
+    </div>
+    <script>
+        // var as=document.querySelectorAll('.table a')
+        var dia=document.querySelector('.dialog');
+        var dia1=document.querySelector('.dialog1');
+        // var clo=document.querySelectorAll('.btn1 button');
+        function dialog(){
+            dia.style.display='block';
+        }
+        function clo(){
+            dia.style.display='none';
+        }
+        function clo1(){
+            dia1.style.display='none';
+        }
+        function clo2(){
+            dia.style.display='none';
+            dia1.style.display='block';
+        }
+        // console.log(as);
+        // as.click(function(){
+        //     dia.style.diaplay='block';
+        // })
+    </script>
+    </body>
+{% endblock %}

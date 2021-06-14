@@ -1,0 +1,121 @@
+{% extends "basea.html" %}
+
+{% block ext_css %}
+    <style>
+        .bg {
+            background-image: url("/static/img/background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+{% endblock %}
+
+{% block content1 %}
+    <body class="bg">
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-11 column">
+                <form class="bs-example bs-example-form" role="form">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="input-group">
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default dropdown-toggle"
+                                            data-toggle="dropdown">学号<span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">姓名</a></li>
+                                    </ul>
+                                </div><!-- /btn-group -->
+                                <input type="text" class="form-control"><span class="input-group-btn">
+						<button class="btn btn-default" type="button">搜索</button>
+					</span>
+                            </div><!-- /input-group -->
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <hr>
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <table class="table">
+                    <thead>
+                    <tr class="info">
+                        <th>学生学号</th>
+                        <th>学生姓名</th>
+                        <th>信用积分</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="warning">
+                        <td>1</td>
+                        <td>TB - Monthly</td>
+                        <td>01/04/2012</td>
+                        <td><a class="btn btn-warning btn-xs" href="/order/bookout">重置积分</a></td>
+                    </tr>
+                    <tr class="success">
+                        <td>1</td>
+                        <td>TB - Monthly</td>
+                        <td>01/04/2012</td>
+                        <td><a class="btn btn-warning btn-xs" href="/order/bookout">重置积分</a></td>
+                    </tr>
+                    <tr class="warning">
+                        <td>1</td>
+                        <td>TB - Monthly</td>
+                        <td>01/04/2012</td>
+                        <td><a class="btn btn-warning btn-xs" href="/order/bookout">重置积分</a></td>
+                    </tr>
+                    <tr class="success">
+                        <td>1</td>
+                        <td>TB - Monthly</td>
+                        <td>01/04/2012</td>
+                        <td><a class="btn btn-warning btn-xs" href="/order/bookout">重置积分</a></td>
+                    <tr class="warning">
+                        <td>1</td>
+                        <td>TB - Monthly</td>
+                        <td>01/04/2012</td>
+                        <td><a class="btn btn-warning btn-xs" href="/order/bookout">重置积分</a></td>
+                    </tr>
+                    <tr class="success">
+                        <td>1</td>
+                        <td>TB - Monthly</td>
+                        <td>01/04/2012</td>
+                        <td><a class="btn btn-warning btn-xs" href="/order/bookout">重置积分</a></td>
+                    <tr class="warning">
+                        <td>1</td>
+                        <td>TB - Monthly</td>
+                        <td>01/04/2012</td>
+                        <td><a class="btn btn-warning btn-xs" href="/order/bookout">重置积分</a></td>
+                    </tr>
+                    <tr class="success">
+                        <td>1</td>
+                        <td>TB - Monthly</td>
+                        <td>01/04/2012</td>
+                        <td><a class="btn btn-warning btn-xs" href="/order/bookout">重置积分</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-md-4 column">
+            </div>
+            <div class="col-md-4 column">
+                <ul class="pagination">
+                    <li><a href="#">Prev</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">Next</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 column">
+            </div>
+        </div>
+    </div>
+    </body>
+{% endblock %}

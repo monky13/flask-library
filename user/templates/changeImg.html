@@ -1,0 +1,35 @@
+{% extends "bases.html" %}
+
+{% block content1 %}
+
+<h1>选择你的头像</h1>
+<hr>
+
+{% if errors %}
+<div class="alert alert-danger alert-dismissible" role="alert">
+    <strong>提示：{{ errors }}</strong>
+</div>
+{% endif %}
+
+<form class="form-horizontal" action="/user/changeImg" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">学号：</label>
+        <div class="col-sm-5">
+            <input class="form-control" type="text" name="id" placeholder="请输入学号">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">头像：</label>
+        <div class="col-sm-5">
+            <input type="file" name="avatar">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-5">
+            <button type="submit" class="btn btn-primary">提交</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "basea.html" %}
+
+{% block ext_css %}
+    <style>
+        .bg {
+            background-image: url("/static/img/background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .div1 {
+            background: rgba(0, 0, 255, 0.05);
+            color: rgba(0, 128, 128, 0.9);
+        }
+    </style>
+{% endblock %}
+
+{% block content1 %}
+    <body class="bg">
+    <!-- 显示当前页的帖子 -->
+    {% for fr in fr_list %}
+        <div class="alert alert-info div1">
+            <div class="row">
+                <div class="col-sm-10">
+                    <a href="/user/info?uid={{ fr.uid }}">
+                        <strong>{{ users[fr.uid] }}</strong>
+                    </a>：
+                </div>
+                <div class="col-sm-2 text-right">
+                    <a href="/admin/fdelete?fid={{ fr.id }}">删除</a>
+                </div>
+            </div>
+            <br>
+            <span>{{ fr.content | replace('\n', '<br>') | safe }}</span>
+        </div>
+
+        <div class="breadcrumb text-right transparent-bg">
+            <li class="active">{{ fr.created }}</li>
+            <li>
+                <a class="btn btn-success btn-xs" href="#">
+                    <span class="glyphicon glyphicon-heart"></span>
+                    &nbsp;
+                    <span class="badge">{{ fr.n_like }}</span>
+                </a>
+            </li>
+            <li>
+                <a class="btn btn-primary btn-xs" href="/admin/fshow?fid={{ fr.id }}">查看</a>
+            </li>
+        </div>
+        {% if not loop.last %}
+            <hr>{% endif %}
+
+    {% else %}
+        <div>当前还没有人发过帖子，您来抢沙发吧！</div>
+    {% endfor %}
+
+    <!-- 显示页码 -->
+    <nav aria-label="Page navigation">
+        <div class="col-md-4 column">
+        </div>
+        <div class="col-md-4 column" align="center">
+            <ul class="pagination">
+                {% for p in range(n_page) %}
+                    {% if loop.index == page %}
+                        <li class="active"><a href="#">{{ loop.index }}</a></li>
+                    {% else %}
+                        <li><a href="/admin/fmng?page={{ loop.index }}">{{ loop.index }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-4 column">
+        </div>
+    </nav>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "basea.html" %}
+
+{% block ext_css %}
+    <style>
+        .bg {
+            background-image: url("/static/img/background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .div1 {
+            background: rgba(0, 0, 0, 0.44);
+            color: rgba(0, 128, 128, 0.76);
+        }
+    </style>
+{% endblock %}
+
+{% block content1 %}
+    <body class="bg">
+    <div class="row">
+        <!-- 用户名 -->
+        <h3 class="col-sm-10">
+            <span class="text-primary">{{ notice.title }}</span>
+            ：
+        </h3>
+
+        <!-- 编辑、删除链接 -->
+        <div class="col-sm-2 text-right" style="padding-top: 20px;">
+            <a class="text-primary" href="/admin/modify?noticeId={{ notice.id }}">修改</a>
+            <a class="text-danger" href="/admin/ndelete?noticeId={{ notice.id }}">删除</a>
+        </div>
+    </div>
+
+    <!-- 微博内容 -->
+    <div class="alert alert-info">
+        {{ notice.content | replace('\n', '<br>') | safe }}
+    </div>
+
+    <!-- 微博状态 -->
+    <div class="breadcrumb text-right transparent-bg">
+        <li class="active">{{ notice.created }}</li>
+    </div>
+
+{% endblock %}

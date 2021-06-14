@@ -1,0 +1,132 @@
+{% extends "bases.html" %}
+
+{% block ext_css %}
+    <style>
+        .bg {
+            background-image: url("/static/img/background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+{% endblock %}
+
+{% block content1 %}
+    <body class="bg">
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-2 column">
+                <label class="control-label">楼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;层：</label>
+            </div>
+            <div class="col-md-2 column">
+                <select class="form-control" id="group" value="1">
+                    <option value="1">一楼</option>
+                    <option value="2">二楼</option>
+                    <option value="2">三楼</option>
+                    <option value="2">四楼</option>
+                    <option value="2">五楼</option>
+                </select>
+            </div>
+            <div class="col-md-8 column">
+                <a class="btn btn-success btn-xs" href="#">&nbsp;&nbsp;&nbsp;</a>空闲&nbsp;&nbsp;
+                <a class="btn btn-warning btn-xs" href="#">&nbsp;&nbsp;&nbsp;</a>忙碌&nbsp;&nbsp;
+                <a class="btn btn-danger btn-xs" href="#">&nbsp;&nbsp;&nbsp;</a>当前预约
+            </div>
+        </div>
+        <br>
+        <div class="row clearfix">
+            <div class="col-md-2 column">
+                <label class="control-label">选择时间：</label>
+            </div>
+            <div class="col-md-6 column">
+                <div class="col-sm-4">
+                    <input class="form-control" readonly="readonly" type="date" name="date">
+                </div>
+                <div class="col-sm-4">
+                    <input class="form-control" type="time" name="time">
+                </div>
+                <div class="col-sm-4">
+                    <input class="form-control" type="time" name="time">
+                </div>
+            </div>
+            <div class="col-md-4 column">
+                <button type="button" class="btn btn-default btn-info">查询</button>
+            </div>
+        </div>
+        <h4></h4>
+    </div>
+    <hr>
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <table class="table">
+                <thead>
+                <tr class="info">
+                    <th></th>
+                    <th>1列</th>
+                    <th>2列</th>
+                    <th>3列</th>
+                    <th>4列</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="warning">
+                    <td>1排</td>
+                    <td><a class="btn btn-success btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-danger btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-success btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                </tr>
+                <tr class="success">
+                    <td>2排</td>
+                    <td><a class="btn btn-success btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-danger btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-success btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                </tr>
+                <tr class="warning">
+                    <td>3排</td>
+                    <td><a class="btn btn-success btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-danger btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-success btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                </tr>
+                <tr class="success">
+                    <td>4排</td>
+                    <td><a class="btn btn-success btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-danger btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-success btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                </tr>
+                <tr class="warning">
+                    <td>5排</td>
+                    <td><a class="btn btn-success btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-danger btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-success btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                </tr>
+                <tr class="success">
+                    <td>6排</td>
+                    <td><a class="btn btn-success btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-danger btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-success btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                </tr>
+                <tr class="warning">
+                    <td>7排</td>
+                    <td><a class="btn btn-success btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-danger btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-success btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                </tr>
+                <tr class="success">
+                    <td>8排</td>
+                    <td><a class="btn btn-success btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-warning btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-danger btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                    <td><a class="btn btn-success btn-xs" href="/order/bookout">&nbsp&nbsp&nbsp</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </body>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "basea.html" %}
+
+{% block ext_css %}
+    <style>
+        .bg {
+            background-image: url("/static/img/background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+{% endblock %}
+
+{% block content1 %}
+    <body class="bg">
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-11 column">
+                <form class="bs-example bs-example-form" role="form" method="post" action="/admin/check">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="input-group">
+                                <span class="input-group-addon">学号</span>
+                                <input type="text" class="form-control" name="userId" id="userId">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary btn-s" type="submit">查找</button>
+                                </span>
+                            </div><!-- /input-group -->
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {% if errors %}
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <strong>提示：{{ errors }}</strong>
+            </div>
+        {% endif %}
+        <hr>
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <table class="table">
+                    <thead>
+                    <tr class="info">
+                        <th>学生学号</th>
+                        <th>学生姓名</th>
+                        <th>信用积分</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in user_list %}
+                        <tr class="warning">
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.name }}</td>
+                            <td>{{ user.credit }}</td>
+                            <td><a class="btn btn-warning btn-xs" href="/admin/resetXy?userId={{ user.id }}">重置积分</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    <!-- 显示页码 -->
+    <nav aria-label="Page navigation">
+        <div class="col-md-4 column">
+        </div>
+        <div class="col-md-4 column" align="center">
+            <ul class="pagination">
+                {% for p in range(n_page) %}
+                    {% if loop.index == page %}
+                        <li class="active"><a href="#">{{ loop.index }}</a></li>
+                    {% else %}
+                        <li><a href="/admin/cmng?page={{ loop.index }}">{{ loop.index }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-4 column">
+        </div>
+    </nav>
+    </div>
+    </body>
+{% endblock %}

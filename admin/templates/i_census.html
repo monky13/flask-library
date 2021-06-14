@@ -1,0 +1,38 @@
+{% extends "basea.html" %}
+{% block ext_css %}
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+{% endblock %}
+
+{% block content1 %}
+    <body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '学院统计'
+            },
+            tooltip: {},
+            legend: {
+                data:['人数']
+            },
+            xAxis: {
+                data: ["商学院","法学院","师范学院","体育学院","计算机学院","机械学院"]
+            },
+            yAxis: {},
+            series: [{
+                name: '人数',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+    </body>
+{% endblock %}

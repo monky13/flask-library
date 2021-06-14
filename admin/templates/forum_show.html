@@ -1,0 +1,92 @@
+{% extends "basea.html" %}
+
+{% block ext_css %}
+    <style>
+        .bg {
+            background-image: url("/static/img/background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .div1 {
+            background: rgba(0, 0, 0, 0.44);
+            color: rgba(0, 128, 128, 0.76);
+        }
+    </style>
+{% endblock %}
+
+{% block content1 %}
+    <body class="bg">
+    <div class="row">
+        <!-- 用户名 -->
+        <h3 class="col-sm-10">
+            <a href="/user/info?uid={{ user.id }}">
+                <span class="text-primary">{{ user.name }}</span>
+            </a>
+            ：
+        </h3>
+
+        <!-- 编辑、删除链接 -->
+        <div class="col-sm-2 text-right" style="padding-top: 20px;">
+            <a class="text-danger" href="/admin/fdelete?fid={{ forum.id }}">删除</a>
+        </div>
+    </div>
+
+    <!-- 内容 -->
+    <div class="alert alert-info">
+        {{ forum.content | replace('\n', '<br>') | safe }}
+    </div>
+
+    <!-- 状态 -->
+    <div class="breadcrumb text-right transparent-bg">
+        <li class="active">{{ forum.created }}</li>
+
+        <li>
+            <a class="btn btn-success btn-xs" href="#">
+                <span class="glyphicon glyphicon-heart"></span>
+                &nbsp;
+                <span class="badge">{{ forum.n_like }}</span>
+            </a>
+        </li>
+    </div>
+
+    <hr>
+
+    <div>&nbsp;</div>  <!-- 占位 -->
+
+    <!-- 评论内容 -->
+    {% for cmt_id, cmt in comments.items() %}
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {% if cmt.cid == 0 %}
+                    <!-- 一级评论的处理 -->
+                    <a href="/user/info?uid={{ cmt.uid }}">
+                        <span class="text-info">{{ cmt_users[cmt.uid] }}</span>:
+                    </a>
+                {% else %}
+                    <!-- 评论回复的处理 -->
+                    <a href="/user/info?uid={{ cmt.uid }}">{{ cmt_users[cmt.uid] }}</a>
+                    @
+                    <a href="/user/info?uid={{ comments[cmt.rid].uid }}">{{ cmt_users[comments[cmt.rid].uid] }}:</a>
+
+                {% endif %}
+            </div>
+
+            <div class="panel-body">
+                <div class="col-sm-7">
+                    {{ cmt.content }}
+                    <br>
+                    <br>
+                    <div class="text-gray">{{ cmt.created }}</div>
+                </div>
+            </div>
+        </div>
+        </body>
+
+        {% if not loop.last %}
+            <hr>{% endif %}
+
+    {% endfor %}
+
+{% endblock %}

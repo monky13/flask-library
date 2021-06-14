@@ -1,0 +1,70 @@
+{% extends "basea.html" %}
+{% block ext_css %}
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+{% endblock %}
+
+{% block content1 %}
+    <body>
+    <div class="col-xs-5">
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div id="cgender" style="width: 400px;height:400px;"></div>
+        <script type="text/javascript">
+            var man={{ man }}
+                    var woman={{ woman }}
+            loadsexnum()
+          function loadsexnum(){
+                // 基于准备好的dom，初始化echarts实例
+            var myChart1 = echarts.init(document.getElementById('cgender'));
+
+            myChart1.setOption({
+                title: {
+                    text: '性别统计'
+                },
+                series: [
+                    {
+                        name: '访问来源',
+                        type: 'pie',    // 设置图表类型为饼图
+                        radius: '55%',  // 饼图的半径，外半径为可视区尺寸（容器高宽中较小一项）的 55% 长度。
+                        data: [          // 数据数组，name 为数据项名称，value 为数据项值
+                            {value: man, name: '男生人数'},
+                            {value: woman, name: '女生人数'}
+                        ]
+                    }
+                ]
+            })
+          }
+        </script>
+    </div>
+
+
+    <div class="col-xs-7">
+        <div id="cinstitute" style="width: 600px;height:400px;"></div>
+        <script type="text/javascript">
+            // 基于准备好的dom，初始化echarts实例
+            var myChart2 = echarts.init(document.getElementById('cinstitute'));
+
+            // 指定图表的配置项和数据
+            var option = {
+                title: {
+                    text: '学院统计'
+                },
+                tooltip: {},
+                legend: {
+                    data: ['人数']
+                },
+                xAxis: {
+                    data: ["商学院", "法学院", "师范学院", "体育学院", "计算机学院", "机械学院"]
+                },
+                yAxis: {},
+                series: [{
+                    name: '人数',
+                    type: 'bar',
+                    data: [5, 20, 36, 10, 10, 20]
+                }]
+            };
+            // 使用刚指定的配置项和数据显示图表。
+            myChart2.setOption(option);
+        </script>
+    </div>
+    </body>
+{% endblock %}

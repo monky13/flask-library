@@ -1,0 +1,149 @@
+{% extends "bases.html" %}
+
+{% block ext_css %}
+    <style>
+        .bg {
+            background-image: url("/static/img/background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            list-style-type: none;
+
+        }
+
+        {#ul li {#}
+        {#    background-image: url("/static/img/img.png");#}
+        {#    background-repeat: no-repeat;#}
+        {#    background-position: 0px 5px;#}
+        {#    padding-left: 14px;#}
+        {##}
+    </style>
+{% endblock %}
+
+{% block content1 %}
+    <body class="bg">
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <table class="table">
+                    <thead>
+                    <tr class="info">
+                        {#                    楼层选择#}
+                        <td class="text-center">
+                            <label class="control-label">选择楼层：</label>
+                            <ul>
+                                {#                                <li style="#}
+                                {#            background: url(/static/img/loc.jpg) no-repeat 0px 0px;#}
+                                {#            padding-left: 30px;"><a href="/user/update?uid={{ user.id }}">一楼</a></li>#}
+                                <li><a href="/user/update?uid={{ user.id }}">一楼</a></li>
+                                <li><a href="/user/update?uid={{ user.id }}">二楼</a></li>
+                                <li><a href="/user/update?uid={{ user.id }}">三楼</a></li>
+                                <li><a href="/user/update?uid={{ user.id }}">四楼</a></li>
+                                <li><a href="/user/update?uid={{ user.id }}">五楼</a></li>
+                            </ul>
+                        </td>
+                        {#                    座位选择#}
+                        <td class="text-center">
+                            {#                        座位查询#}
+                            <div class="row clearfix">
+                                <div class="col-md-2 column">
+                                    <label class="control-label">选择时间：</label>
+                                </div>
+                                <div class="col-md-6 column">
+                                    <div class="col-sm-6">
+                                        <input class="form-control" id="measureDate" readonly="readonly"
+                                               type="datetime-local"
+                                               name="date">
+                                        <script type="text/javascript" src='jquery.js'></script>
+                                        <script type="text/javascript">
+                                            //希望每次打开都要默认为今天日期+00:00
+                                            //默认时间
+                                            var myDate = new Date(), Y = myDate.getFullYear(),
+                                                M = myDate.getMonth() + 1, D = myDate.getDate(),
+                                                H = myDate.getHours(), i = myDate.getMinutes();
+                                            //处理月是一位的情况
+                                            if ((M + '').length == 1) {
+                                                M = '0' + (M + '');
+                                            }
+                                            //处理日是一位的情况
+                                            if ((D + '').length == 1) {
+                                                D = '0' + (D + '')
+                                            }
+                                            var curDay = Y + '-' + M + '-' + D + 'T' + H + ':' + i;
+                                            console.log(curDay)
+                                            $('#measureDate').val(curDay)
+                                        </script>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <select name="time" class="form-control">
+                                            <option value="15">15分钟</option>
+                                            <option value="30">30分钟</option>
+                                            <option value="45">45分钟</option>
+                                            <option value="60">60分钟</option>
+                                            <option value="75">75分钟</option>
+                                            <option value="90">90分钟</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-1 column">
+                                        <button type="button" class="btn btn-default btn-info" href="/order/book">预约</button>
+                                    </div>
+                                </div>
+                                <a class="btn btn-success btn-xs">&nbsp;&nbsp;&nbsp;</a>空闲&nbsp;&nbsp;
+                                <a class="btn btn-warning btn-xs">&nbsp;&nbsp;&nbsp;</a>忙碌&nbsp;&nbsp;
+                                <a class="btn btn-danger btn-xs">&nbsp;&nbsp;&nbsp;</a>当前预约
+                            </div>
+                            <br><br>
+                            {#                        座位列表#}
+                            <div class="row clearfix">
+                                <div class="col-md-12 column">
+                                    <table class="table">
+                                        <thead>
+                                        <tr class="info">
+                                            <th width="12%"></th>
+                                            {% for col in range(col_max) %}
+                                                <th width="22%" class="text-center">第{{ loop.index }}列</th>
+                                            {% endfor %}
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for i in numsList %}
+                                            <tr class="warning">
+                                                <td width="12%">第{{ loop.index }}排</td>
+                                                {% for each in i %}
+                                                    {% if each.uid==user.id %}
+                                                        <td width="22%" class="text-center"><a
+                                                                class="btn btn-danger btn-xs"
+                                                                href="/order/book?seatId={{ each.id }}">&nbsp&nbsp&nbsp</a>
+                                                        </td>
+                                                    {% elif each.uid==0 %}
+                                                        <td width="22%" class="text-center"><a
+                                                                class="btn btn-success btn-xs"
+                                                                href="/order/book?seatId={{ each.id }}">&nbsp&nbsp&nbsp</a>
+                                                        </td>
+                                                    {% else %}
+                                                        <td width="22%" class="text-center"><a
+                                                                class="btn btn-warning btn-xs"
+                                                                href="/order/book?seatId={{ each.id }}">&nbsp&nbsp&nbsp</a>
+                                                        </td>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+    </body>
+{% endblock %}

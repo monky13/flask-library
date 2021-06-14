@@ -1,0 +1,102 @@
+{% extends "bases.html" %}
+
+{% block content1 %}
+    <div class="row clearfix">
+        <div class="col-md-1 column">
+        </div>
+        <div class="col-md-10 column">
+            <div class="carousel slide" id="carousel-938966">
+                <ol class="carousel-indicators">
+                    <li class="active" data-slide-to="0" data-target="#carousel-938966">
+                    </li>
+                    <li data-slide-to="1" data-target="#carousel-938966">
+                    </li>
+                    <li data-slide-to="2" data-target="#carousel-938966">
+                    </li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img alt="" src="/static/img/scenery.jpeg"/>
+                        <div class="carousel-caption">
+                            <h4>
+                                灯光夜景
+                            </h4>
+                            <p>
+                                默默肃立的路灯，像等待检阅的哨兵，站姿笔挺，瞪着炯炯有神的眼睛，时刻守护着图书馆的安宁。
+                                一排排、一行行路灯不断向远方延伸，汇聚成了一支支流光溢彩的河流。
+                                放眼望去，这里一片绿光，那里又像有一片云彩在舞动，再前面又像天上的银河到了地上，堆成了一条发光的丝带。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img alt="" src="/static/img/book.jpeg"/>
+                        <div class="carousel-caption">
+                            <h4>
+                                静谧的天堂
+                            </h4>
+                            <p>
+                                阿根廷诗人赫尔博斯说的一句话：“什么是天堂？天堂是图书馆的模样。”
+                                图书馆是静心读书、让文字与自己的灵魂交流的地方，天堂是什么样呢？不过如此。
+                                走进图书馆，是走进一座宽广敞亮的灵魂圣殿。这座圣殿，是静谧的，是肃穆的，是最大程度抛弃了私心杂念的，它不赞成一丝一毫的浮躁和功利。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img alt="" src="/static/img/light.jpeg"/>
+                        <div class="carousel-caption">
+                            <h4>
+                                完备的设施
+                            </h4>
+                            <p>
+                                这里非常地干净整洁，优雅舒适，每一块地板都被擦得亮铛铛的，每一个书架都是油涔涔的红木做的，
+                                每一排书都像卫兵列队一样整齐，每一台书桌都高矮适度，每一位读者都全身心地投入。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <a class="left carousel-control" href="#carousel-938966" data-slide="prev"><span
+                        class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control"
+                                                                                href="#carousel-938966"
+                                                                                data-slide="next"><span
+                    class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+        </div>
+        <div class="col-md-1 column">
+        </div>
+    </div>
+{% endblock %}
+
+{% block content2 %}
+    <div class="row clearfix">
+        <!-- 违约学生 -->
+        <div class="col-md-4 column">
+            <div class="jumbotron">
+                <h3>
+                    近日违约学生
+                </h3>
+                <p>
+                    {{ warning.content }}
+                </p>
+            </div>
+        </div>
+        <!-- 公告 -->
+        <div class="col-md-8 column">
+            <div class="panel-group" id="panel-173614">
+            {% for notice in notice_list %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-173614"
+                           href="#panel-element-{{ notice.id }}">{{ notice.title }}</a>
+                    </div>
+                    <div id="panel-element-{{ notice.id }}" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            {{ notice.content }}
+                            <p align="right">{{ notice.created }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

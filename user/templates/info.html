@@ -1,0 +1,55 @@
+{% extends "bases.html" %}
+
+
+{% block ext_css %}
+    <style>
+        .item {
+            background-color: rgba(0, 128, 128, 0.17);
+            color: white;
+        }
+
+        .item1 {
+            background-color: rgba(0, 128, 128, 0.33);
+            color: rgba(255, 255, 255, 0.48);
+        }
+
+        .div1 {
+            background: rgba(0, 0, 0, 0.48);
+        }
+
+        .bg {
+            background-image: url("/static/img/background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .follow {
+            margin-top: 20px;
+        }
+    </style>
+{% endblock %}
+
+{% block content1 %}
+    <body class="bg">
+    <h1>个人信息</h1>
+    <hr>
+    <div class="jumbotron transparent-bg div1">
+        <a href="/user/changeImg1?uid={{ user.id }}"><img src="{{ user.avatar }}" width="100px"></a>
+        {% if user.id == session.uid %}
+            <span class="label label-info"><a href="/user/update?uid={{ user.id }}">修改用户信息</a></span>
+        {% endif %}
+        <br>
+        <br>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item item">学号：{{ user.id }}</li>
+            <li class="list-group-item item1">姓名：{{ user.name }}</li>
+            <li class="list-group-item item">信用：{{ user.credit }}</li>
+            <li class="list-group-item item1">性别：{{ '男' if user.gender == 'male' else '女' }}</li>
+            <li class="list-group-item item">生日：{{ user.birthday }}</li>
+            <li class="list-group-item item1">学院：{{ user.institute }}</li>
+            <li class="list-group-item item">邮箱：{{ user.email }}</li>
+            <li class="list-group-item item1">简介：{{ user.bio or "这家伙很懒，什么都没留下" }}</li>
+        </ul>
+    </div>
+    </body>
+{% endblock %}

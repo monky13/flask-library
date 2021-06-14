@@ -1,0 +1,32 @@
+{% extends "bases.html" %}
+
+
+{% block content1 %}
+
+<h1>资源预约</h1>
+<hr>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>座位号</th>
+            <th>状态</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for seat in seat_list %}
+        <tr>
+            <td>{{ seat.id }}</td>
+            <td>{{ '空闲' if seat.condition == 'free' else '占用中' }}</td>
+            {% if seat.condition == 'free' %}
+            <td><a class="btn btn-primary btn-xs" href="/order/book?seatId={{ seat.id }}">预约</a></td>
+            {% else %}
+            <td><a class="btn btn-success btn-xs" href="#">已预约</a></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

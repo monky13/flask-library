@@ -1,0 +1,33 @@
+{% extends "bases.html" %}
+
+{% block ext_css %}
+    <style>
+        .bg {
+            background-image: url("/static/img/background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+{% endblock %}
+
+{% block content1 %}
+    <body class="bg">
+    <div class="container">
+
+    </div>
+    </body>
+{% endblock %}
+
+
+<div class="form-group">
+                    <label class="col-sm-1 control-label">楼层：</label>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="date" name="floor">
+                    </div>
+                    <select id="group" value="1">
+                        <option value="1">一楼</option>
+                        <option value="2">二楼</option>
+                    </select>
+                </div>
+
+
